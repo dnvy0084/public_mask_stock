@@ -1,0 +1,26 @@
+{
+  "name": "ref_public_mask",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "parcel src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "browserslist": [
+    "last 1 chrome versions"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/query-string": "^6.3.0",
+    "parcel": "^1.12.4",
+    "parcel-plugin-svelte": "^4.0.6",
+    "query-string": "^6.11.1",
+    "svelte": "^3.19.2",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "sirv-cli": "^0.4.5"
+  }
+}
