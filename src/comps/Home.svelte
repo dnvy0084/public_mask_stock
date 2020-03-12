@@ -13,12 +13,42 @@
         distance: false
     };
 
+    function soldOut(remain) {
+        return remain === 'empty' || 
+            remain === 'break' || 
+            remain === null || 
+            remain === 'null';
+    }
+
+    function mapToNum(remain) {
+        switch(remain) {
+            case 'plenty':
+                return 200
+
+            case 'some':
+                return 100
+
+            case 'few':
+                return 30
+
+            case 'empty':
+                return 0
+
+            case 'break':
+                return 0
+
+            default:
+        }
+
+        return 0;
+    }
+
     function updateList() {
         if(filter.includeSoldOut) {
             _stores = stores;
         }
         else {
-            _stores = stores.filter(store => !store.sold_out);
+            _stores = stores.filter(store => !soldOut(store.remain_stat));
         }
 
         if(filter.ascending) {
@@ -57,11 +87,11 @@
     }
 
     function sortByAscending(arr) {
-        return arr.sort((a, b) => (a.stock_cnt - a.sold_cnt) - (b.stock_cnt - b.sold_cnt))
+        return arr.sort((a, b) => mapToNum(a.remain_stat) - mapToNum(b.remain_stat))
     }
 
     function sortByDesending(arr) {
-        return arr.sort((a, b) => (b.stock_cnt - b.sold_cnt) - (a.stock_cnt - a.sold_cnt))
+        return arr.sort((a, b) => mapToNum(b.remain_stat) - mapToNum(a.remain_stat))
     }
 
     function diff(ax, ay, bx, by) {
@@ -97,9 +127,8 @@
         {#each _stores as store}
             <StoreItem
                 name={store.name.replace(/test::/, '')} 
-                total={store.stock_cnt}
-                sold={store.sold_cnt}
-                soldOut={store.sold_out}
+                remain={store.remain_stat}
+                stockAt={store.stock_at}
                 address={store.addr}
                 lat={store.lat}
                 lng={store.lng}>

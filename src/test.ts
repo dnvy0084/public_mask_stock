@@ -3,11 +3,11 @@ import {parse} from 'query-string';
 const fetchAPI = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/storesByGeo/json`;
 
 function init() {
-    const {lat, lon} = parse(location.search);
+    const {lat, lng} = parse(location.search);
     
-    console.log(lat, lon);
+    console.log(lat, lng);
 
-    const url = `${fetchAPI}?lat=${lat}&lng=${lon}&m=1000`;
+    const url = `${fetchAPI}?lat=${lat}&lng=${lng}&m=1000`;
     const init: RequestInit = {
         mode: 'no-cors'
     }
