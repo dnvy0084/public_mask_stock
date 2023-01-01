@@ -14,7 +14,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/query-string": "^6.3.0",
-    "parcel": "^1.12.4",
+    "parcel": "^2.8.2",
     "parcel-plugin-svelte": "^4.0.6",
     "query-string": "^6.11.1",
     "svelte": "^3.19.2",
